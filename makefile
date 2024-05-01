@@ -15,7 +15,7 @@ build:
 	@mkdir -p "$(SPECS_DIR)"
 
 	@# Compile to executable using PyInstaller
-	@pyinstaller --onefile "$(SOURCE_DIR)/$(MAIN_SCRIPT)" --distpath="$(OUTPUT_DIR)" --workpath="$(BUILD_DIR)" --specpath="$(SPECS_DIR)" --name="$(NAME)"
+	@pyinstaller --onefile --hidden-import=PIL --hidden-import=PIL._tkinter_finder --hidden-import=tkinter "$(SOURCE_DIR)/$(MAIN_SCRIPT)" --distpath="$(OUTPUT_DIR)" --workpath="$(BUILD_DIR)" --specpath="$(SPECS_DIR)" --name="$(NAME)"
 
 	@# Ensure it can be executed
 	@chmod +x "$(OUTPUT_DIR)$(NAME)"
